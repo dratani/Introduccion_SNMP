@@ -1,5 +1,6 @@
 import rrdtool
 ret = rrdtool.create("test.rrd",
+                     #step:300
                      "--start", '920804400',
                      "DS:speed:COUNTER:600:U:U",
                      "RRA:AVERAGE:0.5:1:24",
@@ -14,9 +15,7 @@ upd = rrdtool.update('test.rrd','920804700:12345',
                      '920808000:12415','920808300:12420',
                      '920808600:12422','920808900:12423')
 rrdtool.dump('test.rrd','test.xml');
-print (rrdtool.fetch('test.rrd','AVERAGE',
-                    "--start", '920804400',
-                    "--end",'920809200'))
+
 
 gra= rrdtool.graph("speed.png",
                    "--start", "920804400",
