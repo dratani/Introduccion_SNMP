@@ -2,8 +2,8 @@ import sys
 import rrdtool
 #from AdministracionDeRendimiento.Parte3.Notify import send_alert_attached
 import time
-rrdpath = '/home/tani/PycharmProjects/Introduccion_SNMP/AdministraciónDeRendimiento/RRD/'
-imgpath = '/home/tani/PycharmProjects/Introduccion_SNMP/AdministraciónDeRendimiento/IMG/'
+rrdpath = '/home/tani/PycharmProjects/Introduccion_SNMP/4-AdministraciónDeRendimiento/RRD/'
+imgpath = '/home/tani/PycharmProjects/Introduccion_SNMP/4-AdministraciónDeRendimiento/IMG/'
 
 ultima_lectura = int(rrdtool.last(rrdpath+"trend.rrd"))
 tiempo_final = ultima_lectura
