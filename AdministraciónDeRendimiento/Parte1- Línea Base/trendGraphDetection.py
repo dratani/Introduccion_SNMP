@@ -15,7 +15,9 @@ ret = rrdtool.graphv( imgpath+"deteccion.png",
                      "--vertical-label=Cpu load",
                     '--lower-limit', '0',
                     '--upper-limit', '100',
-                     "DEF:cargaCPU="+rrdpath+"trend.rrd:CPUload:AVERAGE",
+                    "--title=Uso del CPU del agente Usando SNMP y RRDtools \n Detección de umbrales",
+
+                      "DEF:cargaCPU="+rrdpath+"trend.rrd:CPUload:AVERAGE",
 
                      "CDEF:umbral5=cargaCPU,5,LT,0,cargaCPU,IF",
                      "VDEF:cargaMAX=cargaCPU,MAXIMUM",
