@@ -1,5 +1,5 @@
 import rrdtool
-ret = rrdtool.create("/home/tani/PycharmProjects/SNMP/AdministraciónDeRendimiento/RRD/trend.rrd",
+ret = rrdtool.create("/home/tani/PycharmProjects/Introduccion_SNMP/AdministraciónDeRendimiento/RRD/trend.rrd",
                      "--start",'N',
                      "--step",'60',
                      "DS:CPUload:GAUGE:600:U:U",

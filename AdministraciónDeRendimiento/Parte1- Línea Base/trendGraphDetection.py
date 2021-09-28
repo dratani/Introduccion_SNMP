@@ -1,9 +1,9 @@
 import sys
 import rrdtool
-from Practica2.Parte3.Notify import send_alert_attached
+#from AdministracionDeRendimiento.Parte3.Notify import send_alert_attached
 import time
-rrdpath = '/home/tani/PycharmProjects/SNMP/AdministraciónDeRendimiento/RRD/'
-imgpath = '/home/tani/PycharmProjects/SNMP/AdministraciónDeRendimiento/IMG/'
+rrdpath = '/home/tani/PycharmProjects/Introduccion_SNMP/AdministraciónDeRendimiento/RRD/'
+imgpath = '/home/tani/PycharmProjects/Introduccion_SNMP/AdministraciónDeRendimiento/IMG/'
 
 ultima_lectura = int(rrdtool.last(rrdpath+"trend.rrd"))
 tiempo_final = ultima_lectura
@@ -33,4 +33,5 @@ print (ret)
 
 ultimo_valor=float(ret['print[0]'])
 if ultimo_valor>4:
-    send_alert_attached("Sobrepasa Umbral línea base")
+    #send_alert_attached("Sobrepasa Umbral línea base")
+    print("Sobrepasa Umbral línea base")
