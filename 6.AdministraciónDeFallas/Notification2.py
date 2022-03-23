@@ -12,3 +12,4 @@ while 1:
 
 print("Datos obtenidos desde python")
 print(host, ip, varbind)
+

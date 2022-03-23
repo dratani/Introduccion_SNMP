@@ -5,16 +5,16 @@ total_input_traffic = 0
 total_output_traffic = 0
 
 while 1:
-    total_input_segments = int(
+    tcp_in_segments = int(
         consultaSNMP('comunidadASR','localhost',
-                     '1.3.6.1.2.1.2.2.1.10.2'))
-    total_output_traffic = int(
+                     '1.3.6.1.2.1.6.10.0'))
+    tcp_out_segments = int(
         consultaSNMP('comunidadASR','localhost',
-                     '1.3.6.1.2.1.2.2.1.16.2'))
+                     '1.3.6.1.2.1.6.11.0'))
 
-    valor = "N:" + str(total_input_traffic) + ':' + str(total_output_traffic)
+    valor = "N:" + str(tcp_in_segments) + ':' + str(tcp_out_segments)
     print (valor)
-    rrdtool.update('traficoRED.rrd', valor)
+    rrdtool.update('segmentosRed.rrd', valor)
    # rrdtool.dump('traficoRED.rrd','traficoRED.xml')
     time.sleep(1)
 

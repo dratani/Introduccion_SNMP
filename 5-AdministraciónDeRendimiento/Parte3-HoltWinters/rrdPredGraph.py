@@ -36,3 +36,4 @@ ret = rrdtool.graph(pngpath+"pred.png",
                     #"LINE1:outoctets#0000FF:Out traffic",
                     "LINE1:scaledupper#ff0000:Upper Bound Average bits in",
                     "LINE1:scaledlower#0000FF:Lower Bound Average bits in")
+rrdtool.dump(fname, 'pred.xml')

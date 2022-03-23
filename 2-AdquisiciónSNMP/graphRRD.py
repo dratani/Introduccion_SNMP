@@ -11,7 +11,9 @@ ret = rrdtool.graph( "traficoRED.png",
                      "--end","N",
                      "--vertical-label=Bytes/s",
                      "--title=Tráfico de Red de un agente \n Usando SNMP y RRDtools",
-                     "DEF:inoctets=traficoRED.rrd:inoctets:AVERAGE",
-                     "DEF:outoctets=traficoRED.rrd:outoctets:AVERAGE",
-                     "AREA:inoctets#00FF00:Tráfico de entrada",
-                     "LINE3:outoctets#0000FF:Tráfico de salida")
+                     "DEF:traficoEntrada=traficoRED.rrd:inoctets:AVERAGE",
+                     "DEF:traficoSalida=traficoRED.rrd:outoctets:AVERAGE",
+                     "CDEF:escalaIn=traficoEntrada,8,*",
+                     "CDEF:escalaOut=traficoSalida,8,*",
+                     "LINE3:escalaIn#FF0000:Tráfico de entrada",
+                     "LINE3:escalaOut#0000FF:Tráfico de salida")
