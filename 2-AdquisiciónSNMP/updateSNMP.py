@@ -1,5 +1,4 @@
 import time
-import rrdtool
 from getSNMP import consultaSNMP
 total_input_traffic = 0
 total_output_traffic = 0
@@ -13,7 +12,3 @@ while 1:
     print ("Entrada=",total_input_traffic," Salida=",total_output_traffic)
 
     time.sleep(1)
-
-if ret:
-    print (rrdtool.error())
-    time.sleep(300)
