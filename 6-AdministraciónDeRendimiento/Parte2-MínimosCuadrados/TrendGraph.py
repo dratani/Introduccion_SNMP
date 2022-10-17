@@ -1,7 +1,7 @@
 import rrdtool
 import time
-rrdpath = '/home/tani/PycharmProjects/Introduccion_SNMP/5-AdministraciónDeRendimiento/RRD/'
-imgpath = '/home/tani/PycharmProjects/Introduccion_SNMP/5-AdministraciónDeRendimiento/IMG/'
+rrdpath = '/home/tani/PycharmProjects/Introduccion_SNMP/6-AdministraciónDeRendimiento/RRD/'
+imgpath = '/home/tani/PycharmProjects/Introduccion_SNMP/6-AdministraciónDeRendimiento/IMG/'
 fname = 'trend.rrd'
 ultima_lectura = int(rrdtool.last(rrdpath+fname))
 tiempo_final = ultima_lectura + 600

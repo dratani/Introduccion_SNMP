@@ -1,7 +1,7 @@
 import time
 import rrdtool
 from getSNMP import consultaSNMP
-rrdpath = '/home/tani/PycharmProjects/Introduccion_SNMP/5-AdministraciónDeRendimiento/RRD/'
+rrdpath = '/home/tani/PycharmProjects/Introduccion_SNMP/6-AdministraciónDeRendimiento/RRD/'
 carga_CPU = 0
 
 while 1:
