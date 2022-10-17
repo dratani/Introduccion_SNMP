@@ -9,8 +9,8 @@ while 1:
     valor = "N:" + str(carga_CPU)
     print (valor)
     rrdtool.update(rrdpath+'trend.rrd', valor)
-    rrdtool.dump(rrdpath+'trend.rrd','trend.xml')
-    time.sleep(1)
+   # rrdtool.dump(rrdpath+'trend.rrd','trend.xml')
+    time.sleep(5)
 
 if ret:
     print (rrdtool.error())

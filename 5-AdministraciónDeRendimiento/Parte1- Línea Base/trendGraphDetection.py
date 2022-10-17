@@ -7,7 +7,7 @@ imgpath = '/home/tani/PycharmProjects/Introduccion_SNMP/5-AdministraciónDeRendi
 
 ultima_lectura = int(rrdtool.last(rrdpath+"trend.rrd"))
 tiempo_final = ultima_lectura
-tiempo_inicial = tiempo_final - 600
+tiempo_inicial = tiempo_final - 1800
 
 ret = rrdtool.graphv( imgpath+"deteccion.png",
                      "--start",str(tiempo_inicial),
@@ -15,20 +15,17 @@ ret = rrdtool.graphv( imgpath+"deteccion.png",
                      "--vertical-label=Cpu load",
                     '--lower-limit', '0',
                     '--upper-limit', '100',
-                    "--title=Uso del CPU del agente Usando SNMP y RRDtools \n Detección de umbrales",
-
+                    "--title=Carga del CPU del agente Usando SNMP y RRDtools \n Detección de umbrales",
                     "DEF:cargaCPU="+rrdpath+"trend.rrd:CPUload:AVERAGE",
-
                      "VDEF:cargaMAX=cargaCPU,MAXIMUM",
                      "VDEF:cargaMIN=cargaCPU,MINIMUM",
                      "VDEF:cargaSTDEV=cargaCPU,STDEV",
                      "VDEF:cargaLAST=cargaCPU,LAST",
-
-                     "CDEF:umbral5=cargaCPU,15,LT,0,cargaCPU,IF",
+                 #   "CDEF:cargaEscalada=cargaCPU,8,*",
+                     "CDEF:umbral10=cargaCPU,20,LT,0,cargaCPU,IF",
                      "AREA:cargaCPU#00FF00:Carga del CPU",
-                     "AREA:umbral5#FF9F00:Carga CPU mayor que 5",
-                     "HRULE:15#FF0000:Umbral 1 - 5%",
-
+                     "AREA:umbral10#FF9F00:Carga CPU mayor que 10",
+                     "HRULE:20#FF0000:Umbral 10 - 5%",
                      "PRINT:cargaLAST:%6.2lf",
                      "GPRINT:cargaMIN:%6.2lf %SMIN",
                      "GPRINT:cargaSTDEV:%6.2lf %SSTDEV",
@@ -36,6 +33,6 @@ ret = rrdtool.graphv( imgpath+"deteccion.png",
 print (ret)
 
 ultimo_valor=float(ret['print[0]'])
-if ultimo_valor>4:
+if ultimo_valor>10:
     send_alert_attached("Sobrepasa Umbral línea base")
     print("Sobrepasa Umbral línea base")

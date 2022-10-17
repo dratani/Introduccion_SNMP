@@ -9,7 +9,7 @@ COMMASPACE = ', '
 mailsender = "dummycuenta3@gmail.com"
 mailreceip = "dummycuenta3@gmail.com"
 mailserver = 'smtp.gmail.com: 587'
-password = 'Secreto123@'
+password = 'Secreto123#'
 subject = "Alerta SNMP-TRAP detectada"
 mail_content = 'Trap detectada'
 
