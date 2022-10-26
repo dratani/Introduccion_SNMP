@@ -15,11 +15,13 @@ ret = rrdtool.graphv( "segmentosTCP.png",
                       "VDEF:segEntradaLast=sEntrada,LAST",
                       "VDEF:segEntradaFirst=sEntrada,FIRST",
                       "VDEF:segEntradaMax=sEntrada,MAXIMUM",
-                      "CDEF:Nivel1=sEntrada,1,LT,0,sEntrada,IF",
+                      "VDEF:segEntradaDev=sEntrada,STDEV",
+                      "CDEF:Nivel1=sEntrada,84,GT,0,sEntrada,IF",
                       "PRINT:segEntradaLast:%6.2lf",
                       "PRINT:segEntradaFirst:%6.2lf",
-                     "GPRINT:segEntradaMax:%6.2lf %SegEntMAX",
+                     "GPRINT:segEntradaMax:%6.2lf %S segEntMAX",
+                     "GPRINT:segEntradaDev:%6.2lf %S STDEV",
                      "LINE3:sEntrada#FF0000:Segmentros recibidos",
-                     "LINE3:sSalida#0000FF:Segmentos enviados")
-
+                     "LINE3:sSalida#0000FF:Segmentos enviados"
+                      )
 print(ret)
