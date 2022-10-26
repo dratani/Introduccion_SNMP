@@ -14,8 +14,8 @@ upd = rrdtool.update('test.rrd','920804700:12345',
                      '920807400:12405', '920807700:12411',
                      '920808000:12415','920808300:12420',
                      '920808600:12422','920808900:12423')
-rrdtool.dump('test.rrd','test.xml');
 
+rrdtool.dump('test.rrd','test.xml');
 
 gra= rrdtool.graph("speed.png",
                    "--start", "920804400",
