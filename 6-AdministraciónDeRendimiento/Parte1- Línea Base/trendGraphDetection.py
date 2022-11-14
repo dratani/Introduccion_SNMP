@@ -5,7 +5,6 @@ from  Notify import send_alert_attached
 import time
 rrdpath = '/home/tani/PycharmProjects/Introduccion_SNMP/6-AdministraciónDeRendimiento/RRD/'
 imgpath = '/home/tani/PycharmProjects/Introduccion_SNMP/6-AdministraciónDeRendimiento/IMG/'
-ultima_actualizacion = int(rrdtool.last(rrdpath + "trend.rrd"))
 
 def generarGrafica(ultima_lectura):
     tiempo_final = int(ultima_lectura)
@@ -33,7 +32,8 @@ def generarGrafica(ultima_lectura):
     print (ret)
 
 while (1):
-    if ultima_actualizacion > 5:
+    ultima_actualizacion = int(rrdtool.last(rrdpath + "trend.rrd"))
+    if ultima_actualizacion > 8:
         generarGrafica(ultima_actualizacion)
         send_alert_attached("Sobrepasa el umbral")
         print("sobrepasa el umbral")
