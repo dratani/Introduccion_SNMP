@@ -1,6 +1,7 @@
 import sys
 import rrdtool
 import time
+import datetime
 from  Notify import send_alert_attached
 import time
 rrdpath = '/home/tani/PycharmProjects/Introduccion_SNMP/6-AdministraciónDeRendimiento/RRD/'
@@ -21,10 +22,10 @@ def generarGrafica(ultima_lectura):
                      "VDEF:cargaMIN=cargaCPU,MINIMUM",
                      "VDEF:cargaSTDEV=cargaCPU,STDEV",
                      "VDEF:cargaLAST=cargaCPU,LAST",
-                     "CDEF:umbral5=cargaCPU,5,LT,0,cargaCPU,IF",
+                     "CDEF:umbral50=cargaCPU,50,LT,0,cargaCPU,IF",
                      "AREA:cargaCPU#00FF00:Carga del CPU",
-                     "AREA:umbral5#FF9F00:Carga CPU mayor que 5",
-                     "HRULE:5#FF0000:Umbral  5%",
+                     "AREA:umbral50#FF9F00:Carga CPU mayor de 50",
+                     "HRULE:8#FF0000:Umbral  50%",
                      "PRINT:cargaLAST:%6.2lf",
                      "GPRINT:cargaMIN:%6.2lf %SMIN",
                      "GPRINT:cargaSTDEV:%6.2lf %SSTDEV",
@@ -32,9 +33,12 @@ def generarGrafica(ultima_lectura):
     print (ret)
 
 while (1):
-    ultima_actualizacion = int(rrdtool.last(rrdpath + "trend.rrd"))
-    if ultima_actualizacion > 8:
-        generarGrafica(ultima_actualizacion)
+    ultima_actualizacion = rrdtool.lastupdate(rrdpath + "trend.rrd")
+    timestamp=ultima_actualizacion['date'].timestamp()
+    dato=ultima_actualizacion['ds']["CPUload"]
+    print(dato)
+    if dato> 50:
+        generarGrafica(int(timestamp))
         send_alert_attached("Sobrepasa el umbral")
         print("sobrepasa el umbral")
     time.sleep(20)
