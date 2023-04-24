@@ -10,7 +10,3 @@ while 1:
     print (valor)
     rrdtool.update(rrdpath+'trend.rrd', valor)
     time.sleep(5)
-
-if ret:
-    print (rrdtool.error())
-    time.sleep(300)

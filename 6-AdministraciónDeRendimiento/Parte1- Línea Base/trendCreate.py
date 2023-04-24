@@ -3,6 +3,6 @@ ret = rrdtool.create("/home/tani/PycharmProjects/Introduccion_SNMP/6-Administrac
                      "--start",'N',
                      "--step",'60',
                      "DS:CPUload:GAUGE:60:0:100",
-                     "RRA:AVERAGE:0.5:1:24")
+                     "RRA:AVERAGE:0.5:1:2400")
 if ret:
     print (rrdtool.error())

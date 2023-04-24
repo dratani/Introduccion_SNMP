@@ -25,7 +25,7 @@ def generarGrafica(ultima_lectura):
                      "CDEF:umbral50=cargaCPU,50,LT,0,cargaCPU,IF",
                      "AREA:cargaCPU#00FF00:Carga del CPU",
                      "AREA:umbral50#FF9F00:Carga CPU mayor de 50",
-                     "HRULE:8#FF0000:Umbral  50%",
+                     "HRULE:50#FF0F00:Umbral  50%",
                      "PRINT:cargaLAST:%6.2lf",
                      "GPRINT:cargaMIN:%6.2lf %SMIN",
                      "GPRINT:cargaSTDEV:%6.2lf %SSTDEV",
@@ -34,6 +34,7 @@ def generarGrafica(ultima_lectura):
 
 while (1):
     ultima_actualizacion = rrdtool.lastupdate(rrdpath + "trend.rrd")
+    print(ultima_actualizacion)
     timestamp=ultima_actualizacion['date'].timestamp()
     dato=ultima_actualizacion['ds']["CPUload"]
     print(dato)
